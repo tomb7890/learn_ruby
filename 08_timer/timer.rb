@@ -1,3 +1,4 @@
+# implementation of Timer class
 class Timer
   def initialize
     @time = 0
@@ -8,13 +9,13 @@ class Timer
   end
 
   def seconds=(t)
-      @time = t
+    @time = t
   end
 
   def time_string
-    hours = @time/60/60
-    minutes = (@time/60) % 60
+    hours = @time / 60 / 60
+    minutes = (@time / 60) % 60
     seconds = @time % 60
-    "%02d" % hours + ":%02d" % minutes + ":%02d" % seconds
+    format('%02d:%02d:%02d', hours, minutes, seconds)
   end
 end

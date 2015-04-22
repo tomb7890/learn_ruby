@@ -1,24 +1,18 @@
+# implementation of the Book Class
 class Book
-public
+  public
 
   def title=(x)
-    no_words=%w{and an of the in a}
-    yes_words=%w{i}
-    words=x.split
-
+    specials = %w(and an of the in a)
+    words = x.split
     stack = []
-
     words.each do |w|
-      if yes_words.include?(w)
-        stack << w.capitalize
-      elsif no_words.include?(w)
-        stack << w.downcase
-      else
-        stack << w.capitalize
-      end
+      w.capitalize! unless specials.include?(w)
+      stack << w
     end
+    # override specials logic with first word
     stack[0] = stack[0].capitalize
-    @t=stack.join(" ")
+    @t = stack.join(' ')
   end
 
   def title
